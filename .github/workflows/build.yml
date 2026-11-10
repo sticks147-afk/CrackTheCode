@@ -2,25 +2,34 @@ name: Build APK
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   workflow_dispatch:
 
 jobs:
   build-android:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Build with Buildozer
-        uses: ArtemSBulgakov/buildozer-action@v1
-        id: buildozer
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
         with:
-          command: buildozer android debug
-          buildozer_version: master
+          python-version: '3.11'
 
-      - name: Upload artifacts
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential git ffmpeg libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev zlib1g-dev libffi-dev zip unzip openjdk-17-jdk autoconf libtool pkg-config
+          pip install buildozer "cython<3.0" virtualenv
+
+      - name: Build APK with Buildozer
+        run: |
+          yes | buildozer -v android debug
+
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: CrackTheCode-APK
-          path: ${{ steps.buildozer.outputs.filename }}
+          path: bin/*.apk
