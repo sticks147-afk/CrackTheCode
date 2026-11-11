@@ -10,7 +10,7 @@ source.include_patterns = PUZZLES/*, AUDIO/*
 version = 1.0
 requirements = python3==3.11.6,hostpython3==3.11.6,kivy
 orientation = portrait
-fullscreen = 0
+fullscreen = 1
 
 android.archs = arm64-v8a, armeabi-v7a
 android.allow_backup = True
