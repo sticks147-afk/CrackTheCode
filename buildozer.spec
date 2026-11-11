@@ -17,4 +17,3 @@ android.allow_backup = True
 android.accept_sdk_license = True
 
 # Memory limit to prevent GitHub server crashes
-p4a.extra_args = --jobs 2
