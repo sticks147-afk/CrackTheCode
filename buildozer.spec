@@ -8,7 +8,7 @@ source.include_exts = py,png,jpg,kv,atlas,mp3,ogg,wav
 source.include_patterns = PUZZLES/*, AUDIO/*
 
 version = 1.0
-requirements = python3,kivy
+requirements = python3==3.11.6,hostpython3==3.11.6,kivy
 orientation = portrait
 fullscreen = 0
 
