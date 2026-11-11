@@ -11,6 +11,7 @@ from kivy.core.window import Window
 from kivy.utils import get_color_from_hex
 from kivy.clock import Clock
 from kivy.core.audio import SoundLoader
+from kivy.metrics import dp
 
 # Set a mobile-like window size for testing on desktop
 Window.size = (400, 700)
@@ -67,7 +68,7 @@ def get_all_puzzles():
 class SplashScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        layout = BoxLayout(orientation='vertical', padding=30, spacing=20)
+        layout = BoxLayout(orientation='vertical', padding=dp(30), spacing=dp(20))
         
         branding = Label(
             text="Brought to you by\n\nAJ Entertainments", 
@@ -88,7 +89,7 @@ class SplashScreen(Screen):
 class MenuScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        layout = BoxLayout(orientation='vertical', padding=30, spacing=20)
+        layout = BoxLayout(orientation='vertical', padding=dp(30), spacing=dp(20))
         
         title = Label(
             text="CRACK THE CODE", 
@@ -107,7 +108,7 @@ class MenuScreen(Screen):
         )
         layout.add_widget(subtitle)
 
-        grid = GridLayout(cols=1, spacing=15, size_hint=(1, 0.7))
+        grid = GridLayout(cols=1, spacing=dp(15), size_hint=(1, 0.7))
         
         categories = list(PUZZLES.keys()) + ["Random"]
         for cat in categories:
@@ -137,7 +138,7 @@ class GameScreen(Screen):
         self.current_puzzle = None
         self.unplayed_pools = {} 
         
-        self.layout = BoxLayout(orientation='vertical', padding=30, spacing=20)
+        self.layout = BoxLayout(orientation='vertical', padding=dp(30), spacing=dp(20))
 
         header = BoxLayout(orientation='horizontal', size_hint=(1, 0.1))
         back_btn = Button(
@@ -166,7 +167,7 @@ class GameScreen(Screen):
             bold=True, 
             color=get_color_from_hex('#FF3B30'),
             size_hint=(1, 0.3),
-            text_size=(300, None),
+            text_size=(dp(300), None),
             halign='center'
         )
         self.layout.add_widget(self.phonetic_label)
