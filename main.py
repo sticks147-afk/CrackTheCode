@@ -261,8 +261,8 @@ class PhoneticGameApp(App):
         base_dir = os.path.dirname(os.path.abspath(__file__))
         audio_dir = os.path.join(base_dir, "AUDIO")
         
-        self.sound_click = SoundLoader.load(os.path.join(audio_dir, 'click.mp3'))
-        self.sound_reveal = SoundLoader.load(os.path.join(audio_dir, 'reveal.mp3'))
+        self.sound_click = SoundLoader.load(os.path.join(audio_dir, 'click.wav'))
+        self.sound_reveal = SoundLoader.load(os.path.join(audio_dir, 'reveal.wav'))
 
         self.screen_manager = ScreenManager(transition=FadeTransition())
         
