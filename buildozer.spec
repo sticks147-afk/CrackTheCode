@@ -4,7 +4,7 @@ package.name = crackthecode
 package.domain = org.sticks
 
 source.dir = .
-source.include_exts = py,png,jpg,kv,atlas,mp3,ogg,wav
+source.include_exts = py,png,jpg,kv,atlas,mp3,ogg,wav,csv
 source.include_patterns = PUZZLES/*, AUDIO/*
 
 version = 1.0
